@@ -22,7 +22,7 @@ class InputPage extends StatelessWidget {
                     labelText: 'Email',
                     suffixIcon: InkWell(
                       child: Icon(Icons.cancel),
-                      onTap: () => model.email = '',
+                      onTap: model.deleteEmail,
                     )
                   ),
                 ),
