@@ -3,21 +3,7 @@ import 'package:launcher_practice/input_model.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class InputPage extends StatefulWidget {
-  @override
-  _InputPageState createState() => _InputPageState();
-}
-
-class _InputPageState extends State<InputPage> {
-
-  TextEditingController _controller;
-
-  @override
-  void didChangeDependencies() {
-    _controller = TextEditingController(text: Provider.of<InputModel>(context).email);
-    super.didChangeDependencies();
-  }
-
+class InputPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputModel>(
@@ -30,7 +16,7 @@ class _InputPageState extends State<InputPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextField(
-                  controller: _controller,
+                  controller: model.controller,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
@@ -59,11 +45,5 @@ class _InputPageState extends State<InputPage> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }
