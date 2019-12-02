@@ -25,6 +25,7 @@ class InputPage extends StatelessWidget {
                       onTap: model.deleteEmail,
                     )
                   ),
+                  onChanged: (value) => model.email = value,
                 ),
                 SizedBox(height: 24),
                 InkWell(
