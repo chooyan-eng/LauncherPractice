@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class InputPage extends StatelessWidget {
+class InputPage extends StatefulWidget {
+  @override
+  _InputPageState createState() => _InputPageState();
+}
+
+class _InputPageState extends State<InputPage> {
+
+  TextEditingController _controller;
+
+  @override
+  void initState() {
+    _controller = TextEditingController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,9 +27,18 @@ class InputPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextField(
+                controller: _controller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Email',
+                  suffixIcon: InkWell(
+                    child: Icon(Icons.cancel),
+                    onTap: () {
+                      setState(() {
+                        _controller.text = '';
+                      });
+                    },
+                  )
                 ),
               ),
               SizedBox(height: 24),
@@ -36,5 +59,11 @@ class InputPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
