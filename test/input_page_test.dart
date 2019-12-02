@@ -24,6 +24,7 @@ main() {
       expect(find.byType(InputPage), findsOneWidget);
 
       await tester.tap(find.text('Open example webpage'));
+      await tester.pumpAndSettle();
 
       expect(find.byType(InputPage), findsOneWidget);
     });
